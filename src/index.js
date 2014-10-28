@@ -10,6 +10,20 @@ app.get("/", function(req, res) {
     res.sendFile(path.resolve(__dirname, "../home.html"));
 });
 
+// Serve transformers
+var transformerRouter = express.Router();
+var transformerFiles = fs.readdirSync(path.join(__dirname, "transformers"));
+for (var i in transformerFiles) {
+    var transformer = require(path.join(__dirname, "transformers", transformerFiles[i]));
+    transformerRouter.get(transformer.path, transformer.transformer);
+}
+app.use("/t", transformerRouter);
+
+// Handle undefined transformers
+app.get("/t/*", function(req, res) {
+    res.send("Transformer not found");
+});
+
 app.listen(3141);
 console.log("App is running at http://localhost:3141");
 
