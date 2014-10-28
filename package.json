@@ -1,0 +1,19 @@
+{
+  "name": "rss-full",
+  "version": "0.1.0",
+  "description": "Gives you the full html from a feed makes you follow a link",
+  "author": "Gio d'Amelio",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giodamelio/rss-full.git"
+  },
+  "keywords": [
+    "rss"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/giodamelio/rss-full/issues"
+  },
+  "homepage": "https://github.com/giodamelio/rss-full"
+}
