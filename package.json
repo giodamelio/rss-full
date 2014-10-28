@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/giodamelio/rss-full/issues"
   },
-  "homepage": "https://github.com/giodamelio/rss-full"
+  "homepage": "https://github.com/giodamelio/rss-full",
+  "dependencies": {
+    "express": "^4.10.0"
+  }
 }
