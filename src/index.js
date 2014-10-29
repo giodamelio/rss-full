@@ -24,6 +24,7 @@ app.get("/t/*", function(req, res) {
     res.send("Transformer not found");
 });
 
-app.listen(3141);
-console.log("App is running at http://localhost:3141");
+var PORT = process.env.PORT || 3141;
+app.listen(PORT);
+console.log("App is running at http://localhost:" + PORT);
 
