@@ -1,7 +1,6 @@
 var request = require("request");
 var async = require("async");
 var rss = require("rss");
-var cheerio = require("cheerio");
 var xml2js = require("xml2js");
 
 module.exports.name = "medium";
@@ -62,13 +61,13 @@ var replaceDiscription = function(originalDescription, callback) {
     });
 };
 
-// Get the full html from a medium url
+// Get the full html from a medium url using the readibility api
 var getPostContent = function(item, callback) {
     // Request the main page
-    request.get(item.link[0], function(error, response, body) {
-        // Parse with cheerio and get the main content
-        var $ = cheerio.load(body);
-        item.description = [$(".section--last").html()];
+    var urlBase = "https://readability.com/api/content/v1/parser?token=" + process.env.PARSER_TOKEN + "&url=";
+    request.get(urlBase + item.link[0], function(error, response, body) {
+        body = JSON.parse(body);
+        item.description = [body.content];
         callback(null, item);
     });
 };
